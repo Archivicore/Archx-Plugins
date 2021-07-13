@@ -3,11 +3,11 @@ import textwrap
 
 from PIL import Image, ImageFont, ImageDraw
 
-from userge import userge, Message, Config
-from userge.utils import progress, take_screen_shot, runcmd
+from Archx import Archx, Message, Config
+from Archx.utils import progress, take_screen_shot, runcmd
 
 
-@userge.on_cmd("mmf", about={
+@Archx.on_cmd("mmf", about={
     'header': "Memify aka Geyify (๑¯ω¯๑)",
     'description': "Write text on any gif/sticker/image. "
                    "Top and bottom text are separated by ; \n Naw gu Awey",

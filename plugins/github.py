@@ -1,14 +1,14 @@
-"""Userge Plugin for getting information about an user on GitHub
+"""Archx Plugin for getting information about an user on GitHub
 
 Syntax: .github USERNAME
 """
 
 import requests
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("github", about={
+@Archx.on_cmd("github", about={
     'header': "Get info about an GitHub User",
     'flags': {'-l': "repo limit : default to 5"},
     'usage': ".github [flag] [username]",

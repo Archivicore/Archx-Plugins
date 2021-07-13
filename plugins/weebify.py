@@ -1,4 +1,4 @@
-from userge import userge, Message
+from Archx import Archx, Message
 
 normal_char = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -13,7 +13,7 @@ weeby_char = [
 ]
 
 
-@userge.on_cmd("weebify", about={
+@Archx.on_cmd("weebify", about={
     'header': "Weebify",
     'description': "create text in a weeb style",
     'usage': "{tr}weebify [text | reply]"})

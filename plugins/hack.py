@@ -2,10 +2,10 @@
 
 import asyncio
 
-from userge import userge
+from Archx import Archx
 
 
-@userge.on_cmd("hack$", about={'header': "kensar hacking animation"})
+@Archx.on_cmd("hack$", about={'header': "kensar hacking animation"})
 async def hack_func(message):
     user = await message.client.get_user_dict(message.from_user.id)
     heckerman = user['mention']

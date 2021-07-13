@@ -1,4 +1,4 @@
-# Userge Plugin for Labstack Uploads (https://up.labstack.com)
+# Archx Plugin for Labstack Uploads (https://up.labstack.com)
 # Author: Sumanjay (https://github.com/cyberboysumanjay) (@cyberboysumanjay)
 # All rights reserved.
 
@@ -9,11 +9,11 @@ from typing import Dict
 
 import requests
 
-from userge import userge, Config, Message, pool
-from userge.utils import progress
+from Archx import Archx, Config, Message, pool
+from Archx.utils import progress
 
 
-@userge.on_cmd("yrs", about={
+@Archx.on_cmd("yrs", about={
     'header': "Yandex Reverse Search",
     'description': "Reverse Search any Image/sticker",
     'usage': "{tr}yrs [Reply to image | sticker]",

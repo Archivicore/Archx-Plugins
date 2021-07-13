@@ -8,13 +8,13 @@ import json
 import asyncio
 import requests
 
-from userge import userge, Message, Config
-from userge.utils import progress, humanbytes
+from Archx import Archx, Message, Config
+from Archx.utils import progress, humanbytes
 
 API_KEY = os.environ.get("VT_API_KEY", None)
 
 
-@userge.on_cmd("scan", about={
+@Archx.on_cmd("scan", about={
     'header': "Virus-Total module to check virus in document files.",
     'description': "scan virus in document files which are less then 32MB.",
     'usage': "{tr}scan [reply to document file]"})

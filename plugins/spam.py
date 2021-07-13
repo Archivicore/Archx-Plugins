@@ -1,12 +1,12 @@
 import os
 import asyncio
 
-from userge import userge, Message, Config
+from Archx import Archx, Message, Config
 
-S_LOG = userge.getCLogger(__name__)
+S_LOG = Archx.getCLogger(__name__)
 
 
-@userge.on_cmd("spam", about={
+@Archx.on_cmd("spam", about={
     'header': "Spam some Messages",
     'description': "Message Spam module just for fun."
                    "Btw Don't over use this plugin or get"

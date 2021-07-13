@@ -4,11 +4,11 @@ import os
 
 from pyrogram.errors.exceptions.bad_request_400 import YouBlockedUser
 
-from userge import userge, Message, Config
-from userge.utils import take_screen_shot, runcmd
+from Archx import Archx, Message, Config
+from Archx.utils import take_screen_shot, runcmd
 
 
-@userge.on_cmd("meme", about={
+@Archx.on_cmd("meme", about={
     'header': "Write text on any media. (๑¯ω¯๑)",
     'description': "Top and bottom text are separated by ; ",
     'usage': "{tr}meme [text on top] ; [text on bottom] as a reply."}, allow_via_bot=False)
@@ -55,7 +55,7 @@ async def meme_(message: Message):
             meme_file = file_2
 
     chat = "@MemeAuto_bot"
-    async with userge.conversation(chat) as conv:
+    async with Archx.conversation(chat) as conv:
         try:
             await conv.send_message("/start")
             await conv.get_response(mark_read=True)
@@ -67,7 +67,7 @@ async def meme_(message: Message):
         if should_forward:
             await conv.forward_message(replied)
         else:
-            await userge.send_photo(chat, meme_file)
+            await Archx.send_photo(chat, meme_file)
         response = await conv.get_response(mark_read=True)
         if "Okay..." not in response.text:
             await message.err("Bot is Down, try to restart Bot !...")

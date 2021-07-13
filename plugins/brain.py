@@ -2,10 +2,10 @@
 
 import asyncio
 
-from userge import userge
+from Archx import Archx
 
 
-@userge.on_cmd("brain$", about={'header': "Dump your Brain into Trash"})
+@Archx.on_cmd("brain$", about={'header': "Dump your Brain into Trash"})
 async def brain_func(message):
     animation_chars = [
         "YOᑌᖇ ᗷᖇᗩIᑎ ➡️ 🧠\n\n🧠         <(^_^ <)🗑",

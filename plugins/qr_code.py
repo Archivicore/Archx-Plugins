@@ -8,10 +8,10 @@ import qrcode
 
 from bs4 import BeautifulSoup
 
-from userge import userge, Config, Message
+from Archx import Archx, Config, Message
 
 
-@userge.on_cmd("mkqr", about={
+@Archx.on_cmd("mkqr", about={
     'header': "Returns Qr code of text or replied text",
     'usage': "{tr}mkqr [text | reply to text msg]"})
 async def make_qr(message: Message):
@@ -37,7 +37,7 @@ async def make_qr(message: Message):
     img = qr.make_image(fill_color="black", back_color="white")
     img.save("qrcode.webp", "PNG")
     await message.delete()
-    await userge.send_sticker(
+    await Archx.send_sticker(
         message.chat.id,
         "qrcode.webp",
         reply_to_message_id=replied.message_id if replied else None
@@ -45,7 +45,7 @@ async def make_qr(message: Message):
     os.remove("qrcode.webp")
 
 
-@userge.on_cmd("getqr", about={
+@Archx.on_cmd("getqr", about={
     'header': "Get data of any qr code",
     'usage': "{tr}getqr [Reply to qr code]"})
 async def get_qr(message: Message):

@@ -4,10 +4,10 @@
 
 import aiohttp
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd(
+@Archx.on_cmd(
     "iplook", about={
         'header': "A IPLookUp Plugin",
         'description': "Put IP Address to get some details about that.",

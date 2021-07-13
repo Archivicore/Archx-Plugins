@@ -3,11 +3,11 @@ import re
 import shlex
 import asyncio
 
-from userge import userge, Message, Config
-from userge.utils import progress
+from Archx import Archx, Message, Config
+from Archx.utils import progress
 
 
-@userge.on_cmd("web ?(.+?|) (anonfiles|transfer|filebin|anonymousfiles"
+@Archx.on_cmd("web ?(.+?|) (anonfiles|transfer|filebin|anonymousfiles"
                "|megaupload|bayfiles|vshare|0x0|fileio|ninja)",
                about={
                    'header': "upload files to web",

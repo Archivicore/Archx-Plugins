@@ -5,7 +5,7 @@ from pyrogram.types import InputMediaPhoto
 from PIL import Image
 from google_images_search import GoogleImagesSearch as GIS
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
 PATH = "temp_img_down/"
@@ -29,7 +29,7 @@ option and for "Sites to search" option select "Search the entire
  web but emphasize included sites"."""
 
 
-@userge.on_cmd("gimg", about={
+@Archx.on_cmd("gimg", about={
     'header': "Google Image Search",
     'description': "Search and Download Images from"
                    " Google and upload to Telegram",

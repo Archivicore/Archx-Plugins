@@ -5,8 +5,8 @@ from spotdl.search import spotifyClient
 from spotdl.search.songObj import SongObj
 from spotdl.download.downloader import DownloadManager
 
-from userge import userge, Message, pool
-from userge.plugins.misc.upload import audio_upload
+from Archx import Archx, Message, pool
+from Archx.plugins.misc.upload import audio_upload
 
 
 def init_client() -> None:
@@ -27,7 +27,7 @@ async def download_track(url: Union[str, SongObj]) -> Path:
     return await DownloadManager().download_song(song)
 
 
-@userge.on_cmd("stdl", about={
+@Archx.on_cmd("stdl", about={
     'header': "Spotify Track Downloader",
     'description': "Download Songs via Spotify Links",
     'usage': "{tr}stdl [Spotify Link]",

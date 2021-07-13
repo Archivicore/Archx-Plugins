@@ -1,12 +1,5 @@
 """ Search for Anime related Info """
 
-# Module Capable of fetching Anime, Airing, Character Info &
-# Anime Reverse Search made for UserGe.
-# AniList Api (GitHub: https://github.com/AniList/ApiV2-GraphQL-Docs)
-# Anime Reverse Search Powered by tracemoepy.
-# TraceMoePy (GitHub: https://github.com/DragSama/tracemoepy)
-# (C) Author: Phyco-Ninja (https://github.com/Phyco-Ninja) (@PhycoNinja13b)
-
 import os
 from datetime import datetime
 
@@ -16,11 +9,11 @@ import tracemoepy
 from aiohttp import ClientSession
 from html_telegraph_poster import TelegraphPoster
 
-from userge import userge, Message, get_collection, Config
-from userge.utils import progress, take_screen_shot
+from Archx import Archx, Message, get_collection, Config
+from Archx.utils import progress, take_screen_shot
 
 # Logging Errors
-CLOG = userge.getCLogger(__name__)
+CLOG = Archx.getCLogger(__name__)
 
 # Default templates for Query Formatting
 ANIME_TEMPLATE = """[{c_flag}]**{romaji}**
@@ -215,7 +208,7 @@ def make_it_rw(time_stamp, as_countdown=False):
     return str(humanize.naturaldate(datetime.fromtimestamp(time_stamp)))
 
 
-@userge.on_cmd("anime", about={
+@Archx.on_cmd("anime", about={
     'header': "Anime Search",
     'description': "Search for Anime using AniList API",
     'flags': {
@@ -345,7 +338,7 @@ async def anim_arch(message: Message):
     await message.delete()
 
 
-@userge.on_cmd("airing", about={
+@Archx.on_cmd("airing", about={
     'header': "Airing Info",
     'description': "Fetch Airing Detail of a Anime",
     'usage': "{tr}airing [Anime Name | Anilist ID]",
@@ -416,7 +409,7 @@ async def airing_anim(message: Message):
     await message.delete()
 
 
-@userge.on_cmd("scheduled", about={
+@Archx.on_cmd("scheduled", about={
     'header': "Scheduled Animes",
     'description': "Fetch a list of Scheduled Animes from "
                    "AniList API. [<b>Note:</b> If Query exceeds "
@@ -460,7 +453,7 @@ async def get_schuled(message: Message):
         await message.edit(f"[Open in Telegraph]({link})")
 
 
-@userge.on_cmd("character", about={
+@Archx.on_cmd("character", about={
     'header': "Anime Character",
     'description': "Get Info about a Character and much more",
     'usage': "{tr}character [Name of Character]",
@@ -534,7 +527,7 @@ async def character_search(message: Message):
     await message.delete()
 
 
-@userge.on_cmd("ars", about={
+@Archx.on_cmd("ars", about={
     'header': "Anime Reverse Search",
     'description': "Reverse Search any anime by providing "
                    "a snap, or short clip of anime.",
@@ -584,7 +577,7 @@ async def trace_bek(message: Message):
         await message.delete()
 
 
-@userge.on_cmd("setemp", about={
+@Archx.on_cmd("setemp", about={
     'header': "Anime Template",
     'description': "Set your own Custom Anime Template "
                    "that will be used to format .anime "
@@ -601,7 +594,7 @@ async def ani_save_template(message: Message):
     await message.edit("Custom Anime Template Saved")
 
 
-@userge.on_cmd("anitemp", about={
+@Archx.on_cmd("anitemp", about={
     'header': "Anime Template Settings",
     'description': "Remove or View current Custom "
                    "that is being used. ",

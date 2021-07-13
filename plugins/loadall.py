@@ -2,16 +2,16 @@
 
 import os
 
-from userge import userge, Message, Config, logging
-from userge.utils import get_import_path
-from userge.plugins import ROOT
+from Archx import Archx, Message, Config, logging
+from Archx.utils import get_import_path
+from Archx.plugins import ROOT
 
 PLUGINS_CHAT_ID = int(os.environ.get("PLUGINS_CHAT_ID", 0))
-_CHANNEL = userge.getCLogger(__name__)
+_CHANNEL = Archx.getCLogger(__name__)
 _LOG = logging.getLogger(__name__)
 
 
-@userge.on_cmd(
+@Archx.on_cmd(
     'loadall', about={
         'header': "load all plugins from plugins Channel.",
         'usage': "{tr}loadall"
@@ -39,7 +39,7 @@ async def load_all_plugins():
     success = 0
     total = 0
     p_error = ''
-    async for _file in userge.search_messages(
+    async for _file in Archx.search_messages(
         PLUGINS_CHAT_ID, filter="document"
     ):
         total += 1
@@ -53,8 +53,8 @@ async def load_all_plugins():
             await _file.download(file_name=t_path)
             plugin = get_import_path(ROOT, t_path)
             try:
-                await userge.load_plugin(plugin, reload_plugin=True)
-                await userge.finalize_load()
+                await Archx.load_plugin(plugin, reload_plugin=True)
+                await Archx.finalize_load()
             except (ImportError, SyntaxError, NameError) as i_e:
                 os.remove(t_path)
                 p_error += f'\n\n**PLUGIN:** `{file_.file_name}`\n**ERROR:** `{i_e}`'

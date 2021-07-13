@@ -2,7 +2,7 @@
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import PeerIdInvalid
-from userge import userge, Message, Config, filters, get_collection
+from Archx import Archx, Message, Config, filters, get_collection
 
 SAVED_SETTINGS = get_collection("CONFIGS")
 TOGGLE = False
@@ -14,7 +14,7 @@ async def _init():
         TOGGLE = bool(data["data"])
 
 
-@userge.on_cmd(
+@Archx.on_cmd(
     "mentions",
     about="Toggles Mentions, "
           "if enabled Bot will send Message if anyone mention you."
@@ -32,7 +32,7 @@ async def toggle_mentions(msg: Message):
     await msg.edit(f"Mentions Alerter **{'enabled' if TOGGLE else 'disabled'}** Successfully.")
 
 
-@userge.on_filters(
+@Archx.on_filters(
     ~filters.me & ~filters.bot & ~filters.edited & ~filters.service
     & (filters.mentioned | filters.private), group=1, allow_via_bot=False)
 async def handle_mentions(msg: Message):
@@ -49,25 +49,25 @@ async def handle_mentions(msg: Message):
     else:
         link = msg.link
         text = f"{msg.from_user.mention} 💻 tagged you in **{msg.chat.title}.**"
-    text += f"\n\n[Message]({link}):" if not userge.has_bot else "\n\n**Message:**"
+    text += f"\n\n[Message]({link}):" if not Archx.has_bot else "\n\n**Message:**"
     if msg.text:
         text += f"\n`{msg.text}`"
 
     button = InlineKeyboardButton(text="📃 Message Link", url=link)
 
-    client = userge.bot if userge.has_bot else userge
+    client = Archx.bot if Archx.has_bot else Archx
     try:
         await client.send_message(
-            chat_id=userge.id if userge.has_bot else Config.LOG_CHANNEL_ID,
+            chat_id=Archx.id if Archx.has_bot else Config.LOG_CHANNEL_ID,
             text=text,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[button]])
         )
     except PeerIdInvalid:
-        if userge.dual_mode:
-            await userge.send_message(userge.id, "/start")
+        if Archx.dual_mode:
+            await Archx.send_message(Archx.id, "/start")
             await client.send_message(
-                chat_id=userge.id if userge.has_bot else Config.LOG_CHANNEL_ID,
+                chat_id=Archx.id if Archx.has_bot else Config.LOG_CHANNEL_ID,
                 text=text,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[button]])

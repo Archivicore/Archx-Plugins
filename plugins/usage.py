@@ -3,10 +3,10 @@ import asyncio
 
 import requests
 
-from userge import Config, userge, Message
+from Archx import Config, Archx, Message
 
 
-@userge.on_cmd("usage", about={'header': "Get Dyno hours usage"})  # pylint:disable=E0602
+@Archx.on_cmd("usage", about={'header': "Get Dyno hours usage"})  # pylint:disable=E0602
 async def usage(message: Message):
     """Get your account Dyno Usage"""
     if not Config.HEROKU_APP:

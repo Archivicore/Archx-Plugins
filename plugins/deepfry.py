@@ -7,11 +7,11 @@ from pyrogram.errors.exceptions.bad_request_400 import YouBlockedUser
 
 from PIL import Image, ImageEnhance, ImageOps
 
-from userge import userge, Message, Config
-from userge.utils import progress, take_screen_shot, runcmd
+from Archx import Archx, Message, Config
+from Archx.utils import progress, take_screen_shot, runcmd
 
 
-@userge.on_cmd("deepfry", about={
+@Archx.on_cmd("deepfry", about={
     'header': "Deep Fryer",
     'description': "Well deepfy any image/sticker/gif and make it look ugly",
     'usage': "{tr}deepfry [fry count] as a reply.",
@@ -111,7 +111,7 @@ async def deepfry(img):
 # fry by @krishna_singhal
 
 
-@userge.on_cmd("fry", about={
+@Archx.on_cmd("fry", about={
     'header': "frying media",
     'usage': "{tr}fry [fry count (recommendation 3)] [reply to any media]",
     'examples': "{tr}fry 3 [reply to any media]"}, allow_via_bot=False)
@@ -174,7 +174,7 @@ async def fry_(message: Message):
     if frying_file is None:
         frying_file = dls_loc
     chat = "@image_deepfrybot"
-    async with userge.conversation(chat) as conv:
+    async with Archx.conversation(chat) as conv:
         try:
             await conv.send_message("/start")
         except YouBlockedUser:
@@ -183,9 +183,9 @@ async def fry_(message: Message):
                 del_in=5)
             return
         await conv.get_response(mark_read=True)
-        media = await userge.send_photo(chat, frying_file)
+        media = await Archx.send_photo(chat, frying_file)
         await conv.get_response(mark_read=True)
-        await userge.send_message(
+        await Archx.send_message(
             chat,
             "/deepfry {}".format(args),
             reply_to_message_id=media.message_id,

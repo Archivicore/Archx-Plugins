@@ -5,10 +5,10 @@ import requests
 from bs4 import BeautifulSoup
 from googlesearch import search
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("glyrics", about={
+@Archx.on_cmd("glyrics", about={
     'header': "Genius Lyrics",
     'description': "Scrape Song Lyrics from Genius.com",
     'usage': "{tr}glyrics [Song Name]",

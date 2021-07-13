@@ -8,8 +8,8 @@ import os
 
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
-from userge import Config, Message, userge
-from userge.plugins.misc.download import url_download
+from Archx import Config, Message, Archx
+from Archx.plugins.misc.download import url_download
 
 ARQ_KEY = os.environ.get("ARQ_KEY", None)
 
@@ -18,10 +18,10 @@ session = ClientSession()
 arq = ARQ("https://thearq.tech", ARQ_KEY, session)
 saavn = arq.saavn
 
-LOGGER = userge.getLogger(__name__)
+LOGGER = Archx.getLogger(__name__)
 
 
-@userge.on_cmd(
+@Archx.on_cmd(
     "music",
     about={
         "header": "Search and Download Music",

@@ -1,10 +1,10 @@
 import calendar  # pylint: disable=W0406
 from datetime import datetime
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("cal", about={
+@Archx.on_cmd("cal", about={
     'header': "Print calendar of any month of any year.",
     'usage': "{tr}cal\n{tr}cal [ year | month]",
     'examples': "{tr}cal 2020 | 6"})

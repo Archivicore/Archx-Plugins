@@ -1,14 +1,14 @@
 import os
 from datetime import datetime as dt
 from pytz import timezone
-from userge import userge, Message
+from Archx import Archx, Message
 
-LOG = userge.getLogger(__name__)  # logger object
+LOG = Archx.getLogger(__name__)  # logger object
 
 COUNTRY_CITY = os.environ.get("COUNTRY_CITY", None)
 
 
-@userge.on_cmd("dt", about={
+@Archx.on_cmd("dt", about={
     'header': "Get the time and date of a City/Country/Timezone.",
     'flags': {
         '-l': "Gives list of all Country/City Combos for Heroku Config"},

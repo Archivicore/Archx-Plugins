@@ -8,10 +8,10 @@ import requests
 from pyrogram.types import InputMediaPhoto, InputMediaDocument
 from PIL import Image
 
-from userge import userge, Message, pool
+from Archx import Archx, Message, pool
 
 
-@userge.on_cmd("wall", about={
+@Archx.on_cmd("wall", about={
     'header': "Search Wallpaper",
     'flags': {
         '-l': "Limit of Wallpapers",

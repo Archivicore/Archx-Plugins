@@ -3,7 +3,7 @@ import asyncio
 
 from pyrogram.errors import FloodWait
 
-from userge import userge, logging, Message, Config
+from Archx import Archx, logging, Message, Config
 
 _LOG = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ async def banager(
     return log_msg
 
 
-@userge.on_cmd("snap", about={
+@Archx.on_cmd("snap", about={
     'header': "Ban All",
     'description': "Haha, a Mighty Thanos snap to Ban"
     " All Members of a SuperGroup",

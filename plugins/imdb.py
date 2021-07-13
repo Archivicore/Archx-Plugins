@@ -3,16 +3,16 @@ import os
 import requests
 import wget
 
-from userge import userge, Message, Config, pool
+from Archx import Archx, Message, Config, pool
 
 THUMB_PATH = Config.DOWN_PATH + "imdb_thumb.jpg"
-# ask in @UserGeSpam to get API URLs
+# ask in @ArchxSpam to get API URLs
 # Please don't steal this code.
 API_ONE_URL = os.environ.get("IMDB_API_ONE_URL")
 API_TWO_URL = os.environ.get("IMDB_API_TWO_URL")
 
 
-@userge.on_cmd("imdb", about={
+@Archx.on_cmd("imdb", about={
     'header': "Scrap Movies & Tv Shows from IMDB",
     'description': "Get info about a Movie on IMDB.\n"
                    "[NOTE: To use a custom poster, download "
@@ -27,7 +27,7 @@ async def imdb(message: Message):
     try:
         movie_name = message.input_str
         await message.edit(f"__searching IMDB for__ : `{movie_name}`")
-        search_results = await _get(API_ONE_URL.format(theuserge=movie_name))
+        search_results = await _get(API_ONE_URL.format(theArchx=movie_name))
         srch_results = json.loads(search_results.text)
         first_movie = srch_results.get("d")[0]
         mov_title = first_movie.get("l")

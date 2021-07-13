@@ -8,10 +8,10 @@ import bs4
 import aiohttp
 import requests
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("app", about={
+@Archx.on_cmd("app", about={
     'header': "Search application details of any app in play store.\n"
               "Plugin by - @kirito6969, @Krishna_Singhal",
     'usage': "{tr}app telegram"})
@@ -47,7 +47,7 @@ async def app(message: Message):
         await message.err(err)
 
 
-@userge.on_cmd(
+@Archx.on_cmd(
     'magisk',
     about={
         'header': "Fetch all magisk release from source.",

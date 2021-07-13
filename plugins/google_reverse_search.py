@@ -4,11 +4,11 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-from userge.utils import take_screen_shot
-from userge import userge, Message, Config
+from Archx.utils import take_screen_shot
+from Archx import Archx, Message, Config
 
 
-@userge.on_cmd("grs", about={
+@Archx.on_cmd("grs", about={
     'header': "Google Reverse Search",
     'description': "Reverse Search any Image/Gif",
     'usage': "{tr}grs [Reply to image | gif]"})

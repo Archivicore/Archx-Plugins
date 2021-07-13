@@ -7,16 +7,16 @@ from datetime import datetime
 
 import aiohttp
 import spamwatch
-from UsergeAntiSpamApi import Client
+from ArchxAntiSpamApi import Client
 
-from userge import userge, Config, Message, get_collection
+from Archx import Archx, Config, Message, get_collection
 
 GBAN_USER_BASE = get_collection("GBAN_USER")
 GMUTE_USER_BASE = get_collection("GMUTE_USER")
-LOG = userge.getLogger(__name__)
+LOG = Archx.getLogger(__name__)
 
 
-@userge.on_cmd("info", about={
+@Archx.on_cmd("info", about={
     'header': "To check User's info",
     'usage': "{tr}info [for own info]\n"
              "{tr}info [Username | User Id]\n"
@@ -53,15 +53,15 @@ async def info(msg: Message):
   - **Contact**: `{user.is_contact}`
 """
     if user:
-        if Config.USERGE_ANTISPAM_API:
+        if Config.Archx_ANTISPAM_API:
             try:
-                ban = Client(Config.USERGE_ANTISPAM_API).getban(user.id)
+                ban = Client(Config.Archx_ANTISPAM_API).getban(user.id)
             except Exception as err:
                 return await msg.err(err)
             if not ban:
-                user_info += "\n**Userge Antispam API Banned** : `False`"
+                user_info += "\n**Archx Antispam API Banned** : `False`"
             else:
-                user_info += "\n**Userge Antispam API Banned** : `True`"
+                user_info += "\n**Archx Antispam API Banned** : `True`"
                 user_info += f"\n    **● Reason** : `{ban.reason or None}`"
         if Config.SPAM_WATCH_API:
             status = spamwatch.Client(Config.SPAM_WATCH_API).get_ban(user.id)

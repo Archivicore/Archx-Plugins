@@ -1,14 +1,14 @@
-# Userge Plugin for carbon.now.sh with custom theme and background colour support
+# Archx Plugin for carbon.now.sh with custom theme and background colour support
 # Based on https://github.com/cyberboysumanjay/Carbon-API
 # Author: Sumanjay (https://github.com/cyberboysumanjay) (@cyberboysumanjay)
 # All rights reserved.
 
 import requests
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("carb", about={
+@Archx.on_cmd("carb", about={
     'header': "Create a carbon",
     'usage': "{tr}carb [text or reply to msg | theme-name | colour code]",
     'examples': "{tr}carb Carbon Plugin by Sumanjay | one-dark | #FF0000",

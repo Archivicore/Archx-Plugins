@@ -5,10 +5,10 @@
 import os
 import lottie
 
-from userge import userge, Message, Config, pool
+from Archx import Archx, Message, Config, pool
 
 
-@userge.on_cmd("gif", about={
+@Archx.on_cmd("gif", about={
     'header': "Convert Telegram Animated Sticker to GiF",
     'usage': "{tr}gif [quality (optional)] [reply to sticker]\n"
              "Max quality : 720p",

@@ -5,10 +5,10 @@ from pathlib import Path
 import deezloader  # pylint: disable=W0406
 from deezloader.exceptions import NoDataApi
 
-from userge import userge, Message, pool
-from userge.plugins.misc.upload import doc_upload, audio_upload
+from Archx import Archx, Message, pool
+from Archx.plugins.misc.upload import doc_upload, audio_upload
 
-Clogger = userge.getCLogger(__name__)
+Clogger = Archx.getCLogger(__name__)
 ARL_TOKEN = os.environ.get("ARL_TOKEN")
 TEMP_PATH = 'deezdown_temp/'
 REX = re.compile(r"https?:\/\/(open\.spotify|www\.deezer)\.com\/"
@@ -19,8 +19,8 @@ ARL_HELP = """**Oops, Time to Help Yourself**
 After getting Arl token Config `ARL_TOKEN` var in heroku"""
 
 
-@userge.on_cmd("deezload", about={
-    'header': "DeezLoader for Userge",
+@Archx.on_cmd("deezload", about={
+    'header': "DeezLoader for Archx",
     'description': "Download Songs/Albums/Playlists via "
                    "Spotify or Deezer Links. "
                    "\n<b>NOTE:</b> Music Quality is optional",

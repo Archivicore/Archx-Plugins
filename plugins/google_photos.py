@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #  -*- coding: utf-8 -*-
-#  Telegram UseRGE
+#  Telegram Archx
 #  Copyright (C) 2020 @UniBorg
 #
 # 0) original: https://github.com/SpEcHiDe/UniBorg/raw/master/stdplugins/google_photos.py
@@ -20,9 +20,9 @@ from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client
 
-from userge import userge, Message, Config
-from userge.utils import progress
-from userge.plugins.misc.download import tg_download, url_download
+from Archx import Archx, Message, Config
+from Archx.utils import progress
+from Archx.plugins.misc.download import tg_download, url_download
 
 # setup the gPhotos v1 API
 OAUTH_SCOPE = [
@@ -37,14 +37,14 @@ G_PHOTOS_CLIENT_ID = os.environ.get(
     "G_PHOTOS_CLIENT_ID", os.environ.get("G_DRIVE_CLIENT_ID", None))
 G_PHOTOS_CLIENT_SECRET = os.environ.get(
     "G_PHOTOS_CLIENT_SECRET", os.environ.get("G_DRIVE_CLIENT_SECRET", None))
-TOKEN_FILE_NAME = os.path.join(Config.DOWN_PATH, "gPhoto_credentials_UserGe.json")
+TOKEN_FILE_NAME = os.path.join(Config.DOWN_PATH, "gPhoto_credentials_Archx.json")
 G_PHOTOS_AUTH_TOKEN_ID = int(os.environ.get("G_PHOTOS_AUTH_TOKEN_ID", 0))
 
-LOG = userge.getLogger(__name__)
-CHANNEL = userge.getCLogger(__name__)
+LOG = Archx.getLogger(__name__)
+CHANNEL = Archx.getCLogger(__name__)
 
 
-@userge.on_cmd("gpsetup", about={'header': "setup gphotos"})
+@Archx.on_cmd("gpsetup", about={'header': "setup gphotos"})
 async def setup_google_photos(message: Message):
     if G_PHOTOS_CLIENT_ID is None or G_PHOTOS_CLIENT_SECRET is None:
         await message.err("first fill gphoto id and secret")
@@ -67,7 +67,7 @@ async def create_token_file():
         redirect_uri=REDIRECT_URI
     )
     authorize_url = flow.step1_get_authorize_url()
-    async with userge.conversation(Config.LOG_CHANNEL_ID, timeout=150) as conv:
+    async with Archx.conversation(Config.LOG_CHANNEL_ID, timeout=150) as conv:
         await conv.send_message(
             "Go to the following link in "
             f"your browser: {authorize_url} and reply the code"
@@ -109,7 +109,7 @@ async def check_creds(message):
     return None
 
 
-@userge.on_cmd("gpupload", about={
+@Archx.on_cmd("gpupload", about={
     'header': "upload files to gphoto",
     'usage': "{tr}gpupload [link | path | reply to media]",
     'examples': [

@@ -4,11 +4,11 @@
 
 from pyrogram.errors.exceptions.bad_request_400 import YouBlockedUser
 
-from userge import userge, Message
-from userge.utils.exceptions import StopConversation
+from Archx import Archx, Message
+from Archx.utils.exceptions import StopConversation
 
 
-@userge.on_cmd("sg", about={
+@Archx.on_cmd("sg", about={
     'header': "Sangmata gives you user's last updated names and usernames.",
     'flags': {
         '-u': "To get Username history of a User"},
@@ -26,7 +26,7 @@ async def sangmata_(message: Message):
     msgs = []
     ERROR_MSG = "For your kind information, you blocked @Sangmatainfo_bot, Unblock it"
     try:
-        async with userge.conversation(chat) as conv:
+        async with Archx.conversation(chat) as conv:
             try:
                 await conv.send_message("/search_id {}".format(user))
             except YouBlockedUser:

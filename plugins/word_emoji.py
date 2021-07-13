@@ -2,10 +2,10 @@
 
 # by @krishna_singhal
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("hii", about={
+@Archx.on_cmd("hii", about={
     'header': "Use HI to greet someone",
     'usage': "{tr}hii [foreground emoji] , [background emoji]"})
 async def hii_(message: Message):
@@ -35,7 +35,7 @@ async def hii_(message: Message):
     await message.edit(pay)
 
 
-@userge.on_cmd("lol", about={
+@Archx.on_cmd("lol", about={
     'header': "Lol also known as lots of laugh used to indicate "
               "smiling or slight amusement",
     'usage': "{tr}lol [foreground emoji] , [background emoji]"})
@@ -65,7 +65,7 @@ async def lol_(message: Message):
     await message.edit(pay)
 
 
-@userge.on_cmd("wtf", about={
+@Archx.on_cmd("wtf", about={
     'header': "WTF Generally stands for 'What the fuck' use for fun",
     'usage': "{tr}wtf [foreground emoji] , [background emoji]"})
 async def wtf_(message: Message):

@@ -8,13 +8,13 @@ import requests
 from PIL import Image
 from validators.url import url
 
-from userge.utils import demojify
-from userge import userge, Config, Message
+from Archx.utils import demojify
+from Archx import Archx, Config, Message
 
 CONVERTED_IMG = Config.DOWN_PATH + "img.png"
 
 
-@userge.on_cmd("trump", about={
+@Archx.on_cmd("trump", about={
     'header': "Custom Sticker of Trump Tweet",
     'usage': "{tr}trump [text | reply to text]"})
 async def trump_tweet(msg: Message):
@@ -30,7 +30,7 @@ async def trump_tweet(msg: Message):
     await _tweets(msg, text, type_="trumptweet")
 
 
-@userge.on_cmd("modi", about={
+@Archx.on_cmd("modi", about={
     'header': "Custom Sticker of Modi Tweet",
     'usage': "{tr}modi [text | reply to text]"})
 async def modi_tweet(msg: Message):
@@ -46,7 +46,7 @@ async def modi_tweet(msg: Message):
     await _tweets(msg, text, "narendramodi")
 
 
-@userge.on_cmd("cmm", about={
+@Archx.on_cmd("cmm", about={
     'header': "Custom Sticker of Change My Mind",
     'usage': "{tr}cmm [text | reply to text]"})
 async def Change_My_Mind(msg: Message):
@@ -62,7 +62,7 @@ async def Change_My_Mind(msg: Message):
     await _tweets(msg, text, type_="changemymind")
 
 
-@userge.on_cmd("kanna", about={
+@Archx.on_cmd("kanna", about={
     'header': "Custom text Sticker of kanna",
     'usage': "{tr}kanna [text | reply to text]"})
 async def kanna(msg: Message):
@@ -78,7 +78,7 @@ async def kanna(msg: Message):
     await _tweets(msg, text, type_="kannagen")
 
 
-@userge.on_cmd("carry", about={
+@Archx.on_cmd("carry", about={
     'header': "Custom text Sticker of Carryminati",
     'usage': "{tr}carry [text | reply to text]"})
 async def carry_minati(msg: Message):
@@ -94,7 +94,7 @@ async def carry_minati(msg: Message):
     await _tweets(msg, text, "carryminati")
 
 
-@userge.on_cmd("tweet", about={
+@Archx.on_cmd("tweet", about={
     'header': "Tweet With Custom text Sticker",
     'usage': "{tr}tweet username text\n"
              "{tr}tweet text [reply to user]\n"

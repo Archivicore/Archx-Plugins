@@ -1,4 +1,4 @@
-# Userge Plugin for Labstack Uploads (https://up.labstack.com)
+# Archx Plugin for Labstack Uploads (https://up.labstack.com)
 # Author: Sumanjay (https://github.com/cyberboysumanjay) (@cyberboysumanjay)
 # All rights reserved.
 
@@ -13,11 +13,11 @@ from urllib.parse import unquote_plus
 import requests
 from pySmartDL import SmartDL
 
-from userge import userge, Config, Message
-from userge.utils import progress, humanbytes
+from Archx import Archx, Config, Message
+from Archx.utils import progress, humanbytes
 
 
-@userge.on_cmd("labstack", about={
+@Archx.on_cmd("labstack", about={
     'header': "Uploads and shares files for free on Labstack,"
     "without any restriction on file size and speed.",
     'usage': "{tr}labstack : [Direct Link | Reply to Telegram Media]",

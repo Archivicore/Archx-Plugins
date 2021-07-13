@@ -5,11 +5,11 @@
 import gdshortener
 
 from pyrogram.errors import YouBlockedUser
-from userge import userge, Message
-from userge.utils.exceptions import StopConversation
+from Archx import Archx, Message
+from Archx.utils.exceptions import StopConversation
 
 
-@userge.on_cmd("bitly", about={
+@Archx.on_cmd("bitly", about={
     'header': "Shorten Any Url using bit.ly",
     'usage': "{tr}bitly [link or reply]"}, allow_via_bot=False)
 async def bitly(msg: Message):
@@ -18,7 +18,7 @@ async def bitly(msg: Message):
         await msg.err("need url to shorten")
         return
     try:
-        async with userge.conversation("Sl_BitlyBot") as conv:
+        async with Archx.conversation("Sl_BitlyBot") as conv:
             await conv.send_message("/start")
             await conv.get_response(mark_read=True)
             await conv.send_message(url)
@@ -32,7 +32,7 @@ async def bitly(msg: Message):
         await msg.err("bot is down")
 
 
-@userge.on_cmd("isgd", about={
+@Archx.on_cmd("isgd", about={
     'header': "Shorten Any Url using is.gd",
     'usage': "{tr}isgd [link or reply]"})
 async def is_gd(msg: Message):
@@ -52,7 +52,7 @@ async def is_gd(msg: Message):
         )
 
 
-@userge.on_cmd("statsisgd", about={
+@Archx.on_cmd("statsisgd", about={
     'header': "Convert is.gd url into original URl.",
     'usage': "{tr}statsisgd [link or reply]"})
 async def stats_is_gd(msg: Message):

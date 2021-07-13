@@ -5,10 +5,10 @@
 import math
 import asyncio
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("add", about={
+@Archx.on_cmd("add", about={
     'header': "Returns the addition of given numbers.",
     'usage': "{tr}add [ X + Y ]\n\n{tr}add 6969 + 6969"})
 async def add_(message: Message):
@@ -40,7 +40,7 @@ async def add_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("subtract", about={
+@Archx.on_cmd("subtract", about={
     'header': "Returns the Subtraction of given numbers.",
     'usage': "{tr}subtract [ X - Y ]\n\n{tr}subtract 6969 - 6969"})
 async def subtract_(message: Message):
@@ -72,7 +72,7 @@ async def subtract_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("multiply", about={
+@Archx.on_cmd("multiply", about={
     'header': "Returns the Multiplication of given numbers.",
     'usage': "{tr}multiply [ X * Y ]\n\n{tr}multiply 6969 * 6969"})
 async def multiply_(message: Message):
@@ -103,7 +103,7 @@ async def multiply_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("divide", about={
+@Archx.on_cmd("divide", about={
     'header': "Returns the division of given numbers.",
     'usage': "{tr}divide [ X / Y ]\n\n{tr}divide 6969 / 6969"})
 async def divide_(message: Message):
@@ -134,7 +134,7 @@ async def divide_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("fdivide", about={
+@Archx.on_cmd("fdivide", about={
     'header': "Dividing two integers to get only Quotient known as floor division.",
     'usage': "{tr}fdivide [ X / Y ]\n\n{tr}fdivide 6969 / 6969"})
 async def fdivide_(message: Message):
@@ -165,7 +165,7 @@ async def fdivide_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("modulo", about={
+@Archx.on_cmd("modulo", about={
     'header': "Modulo operation finds the\n"
               "remainder or signed remainder after\n"
               "division of one number by another.",
@@ -198,7 +198,7 @@ async def modulo_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("factorial", about={
+@Archx.on_cmd("factorial", about={
     'header': "Returns the factorial of X number.",
     'usage': "{tr}factorial [ X number ]\n\n{tr}factorial 6969"})
 async def factorial_(message: Message):
@@ -217,7 +217,7 @@ async def factorial_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("power", about={
+@Archx.on_cmd("power", about={
     'header': "Returns X raised to the power Y.",
     'usage': "{tr}power [ X ^ Y ]\n\n{tr}power 6969 ^ 6969"})
 async def power_(message: Message):
@@ -249,7 +249,7 @@ async def power_(message: Message):
         await message.err(e)
 
 
-@userge.on_cmd("sqrt", about={
+@Archx.on_cmd("sqrt", about={
     'header': "Returns the sqaure root of X number.",
     'usage': "{tr}sqrt [ X number ]\n\n{tr}sqrt 6969"})
 async def sqrt_(message: Message):
@@ -268,7 +268,7 @@ async def sqrt_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("sin", about={
+@Archx.on_cmd("sin", about={
     'header': "Returns the SINE function(x)",
     'usage': "{tr}sin [ X number ]\n\n{tr}sin 69"})
 async def sin_(message: Message):
@@ -287,7 +287,7 @@ async def sin_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("cos", about={
+@Archx.on_cmd("cos", about={
     'header': "Returns the COSINE function(x)",
     'usage': "{tr}cos [ X number ]\n\n{tr}cos 69"})
 async def cos_(message: Message):
@@ -306,7 +306,7 @@ async def cos_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("tan", about={
+@Archx.on_cmd("tan", about={
     'header': "Returns the TANGENT(x)",
     'usage': "{tr}tan [ X number ]\n\n{tr}tan 69"})
 async def tan_(message: Message):
@@ -325,7 +325,7 @@ async def tan_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("deg", about={
+@Archx.on_cmd("deg", about={
     'header': "Converts angle X from radians to degrees",
     'usage': "{tr}deg [ X number ]\n\n{tr}deg 69"})
 async def deg_(message: Message):
@@ -344,7 +344,7 @@ async def deg_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("rad", about={
+@Archx.on_cmd("rad", about={
     'header': "Converts angle X from degrees to radians",
     'usage': "{tr}rad [ X number ]\n\n{tr}rad 69"})
 async def rad_(message: Message):
@@ -363,7 +363,7 @@ async def rad_(message: Message):
         "<b>OUTPUT:</b>\n<code>{}</code>".format(result), parse_mode='html')
 
 
-@userge.on_cmd("log", about={
+@Archx.on_cmd("log", about={
     'header': "Returns the logarithm of X to the base",
     'usage': "{tr}log [ X number ]\n\n{tr}log 69"})
 async def log_(message: Message):

@@ -2,10 +2,10 @@
 
 from pyfiglet import Figlet
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("figlet", about={
+@Archx.on_cmd("figlet", about={
     'header': "Figlet",
     'description': "Make Fancy Style text using Figlet",
     'usage': "{tr}figlet font_name | [text | reply]",

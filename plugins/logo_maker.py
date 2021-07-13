@@ -11,9 +11,9 @@ from bs4 import BeautifulSoup
 
 from pyrogram.types import InputMediaPhoto
 
-from userge import userge, Message
+from Archx import Archx, Message
 
-LOG = userge.getLogger(__name__)
+LOG = Archx.getLogger(__name__)
 STATUS = {}
 URI = "https://www.brandcrowd.com/maker/logos"
 HEADERS = {"User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) '
@@ -92,11 +92,11 @@ async def dispatch(message: Message, logos: List[Tuple[str]]):
     await status.delete()
 
 
-@userge.on_cmd("logo", about={
+@Archx.on_cmd("logo", about={
     'header': "Get a logo from brandcrowd",
     'usage': "{tr}logo text:keyword",
     'examples': [
-        "{tr}logo Userge", "{tr}logo Userge:bot"
+        "{tr}logo Archx", "{tr}logo Archx:bot"
     ]
 })
 async def jv_logo_maker(message: Message):

@@ -3,14 +3,14 @@ from asyncio import sleep
 
 from newspaper import Article, ArticleException
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 regex: str = r'(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.' \
              r'[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*))'
 max_chars = 3900
 
 
-@userge.on_cmd("con", about={
+@Archx.on_cmd("con", about={
     'header': "Scrap article content",
     'usage': "{tr}con [link | reply to msg]"})
 async def con_(message: Message):

@@ -3,14 +3,14 @@ import random
 import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("plet", about={
+@Archx.on_cmd("plet", about={
     'header': "Get a Random RGB Sticker",
     'description': "Generates A RGB Sticker with provided text",
     'usage': "{tr}plet [text | reply]",
-    'examples': "{tr}plet @theUserge"}, allow_via_bot=False)
+    'examples': "{tr}plet @theArchx"}, allow_via_bot=False)
 async def sticklet(message: Message):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -50,7 +50,7 @@ async def sticklet(message: Message):
     image_name = "rgb_sticklet.webp"
     image.save(image_name, "WebP")
 
-    await userge.send_sticker(
+    await Archx.send_sticker(
         chat_id=message.chat.id, sticker=image_name, reply_to_message_id=reply_to)
 
     # cleanup
@@ -62,6 +62,6 @@ async def sticklet(message: Message):
 
 
 async def get_font_file():
-    font_file_message_s = await userge.get_history("@FontsRes")
+    font_file_message_s = await Archx.get_history("@FontsRes")
     font_file_message = random.choice(font_file_message_s)
-    return await userge.download_media(font_file_message)
+    return await Archx.download_media(font_file_message)

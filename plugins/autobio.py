@@ -8,7 +8,7 @@ import asyncio
 from pyrogram.errors import FloodWait
 
 from resources.quotes import ENGLISH_QUOTES, HINDI_QUOTES
-from userge import userge, Message, get_collection
+from Archx import Archx, Message, get_collection
 
 BIO_UPDATION = False
 AUTOBIO_TIMEOUT = 300
@@ -16,8 +16,8 @@ BIO_QUOTES = ENGLISH_QUOTES
 
 USER_DATA = get_collection("CONFIGS")
 
-CHANNEL = userge.getCLogger(__name__)
-LOG = userge.getLogger(__name__)
+CHANNEL = Archx.getCLogger(__name__)
+LOG = Archx.getLogger(__name__)
 
 
 async def _init() -> None:
@@ -30,7 +30,7 @@ async def _init() -> None:
         AUTOBIO_TIMEOUT = b_t['data']
 
 
-@userge.on_cmd("autobio", about={
+@Archx.on_cmd("autobio", about={
     'header': "Auto Updates your Profile Bio with 2 languages.",
     'usage': "{tr}autobio (for eng)\n{tr}autobio Hi (for hindi)"})
 async def auto_bio(msg: Message):
@@ -60,7 +60,7 @@ async def auto_bio(msg: Message):
     BIO_UPDATION = asyncio.get_event_loop().create_task(_autobio_worker())
 
 
-@userge.on_cmd("sabto", about={
+@Archx.on_cmd("sabto", about={
     'header': "Set auto bio timeout",
     'usage': "{tr}sabto [timeout in seconds]",
     'examples': "{tr}sabto 500"})
@@ -79,7 +79,7 @@ async def set_bio_timeout(message: Message):
         f"`Set auto bio timeout as {t_o} seconds!`", del_in=5)
 
 
-@userge.on_cmd("vabto", about={'header': "View auto bio timeout"})
+@Archx.on_cmd("vabto", about={'header': "View auto bio timeout"})
 async def view_bio_timeout(message: Message):
     """ view bio timeout """
     await message.edit(
@@ -87,14 +87,14 @@ async def view_bio_timeout(message: Message):
         del_in=5)
 
 
-@userge.add_task
+@Archx.add_task
 async def _autobio_worker():
     while BIO_UPDATION:
         for quote in BIO_QUOTES:
             if not BIO_UPDATION:
                 break
             try:
-                await userge.update_profile(bio=quote)
+                await Archx.update_profile(bio=quote)
             except FloodWait as s_c:
                 LOG.warn(s_c)
                 time.sleep(s_c.x)

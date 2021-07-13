@@ -4,11 +4,11 @@
 
 from pyrogram.errors import UserIsBot, BadRequest
 
-from userge import userge, Config, Message
-from userge.utils import parse_buttons as pb, get_file_id_of_media
+from Archx import Archx, Config, Message
+from Archx.utils import parse_buttons as pb, get_file_id_of_media
 
 
-@userge.on_cmd("cbutton", about={
+@Archx.on_cmd("cbutton", about={
     'header': "Create buttons Using bot",
     'description': "First Create a Bot via @Botfather and "
                    "Add bot token To Config Vars",

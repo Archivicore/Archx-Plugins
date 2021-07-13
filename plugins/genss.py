@@ -5,11 +5,11 @@ import asyncio
 from hachoir.metadata import extractMetadata as XMan
 from hachoir.parser import createParser as CPR
 
-from userge import userge, Message, Config
-from userge.utils import take_screen_shot, progress
+from Archx import Archx, Message, Config
+from Archx.utils import take_screen_shot, progress
 
 
-@userge.on_cmd("genss", about={
+@Archx.on_cmd("genss", about={
     'header': "Screen Shot Generator",
     'description': "Generate Random Screen Shots from any video "
                    " **[NOTE: If no frame count is passed, default"

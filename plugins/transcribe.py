@@ -8,11 +8,11 @@ from aiohttp import ClientSession
 from pydub import AudioSegment
 from pydub.exceptions import CouldntDecodeError
 
-from userge import userge, Message, Config
-from userge.plugins.misc.download import tg_download, url_download
-from userge.utils.exceptions import ProcessCanceled
+from Archx import Archx, Message, Config
+from Archx.plugins.misc.download import tg_download, url_download
+from Archx.utils.exceptions import ProcessCanceled
 
-logger = userge.getLogger(__name__)
+logger = Archx.getLogger(__name__)
 
 
 class WitAiAPI:
@@ -102,7 +102,7 @@ class WitAiAPI:
                         "Ensure that the provided audio is a valid audio file!`"
 
 
-@userge.on_cmd("stt", about={
+@Archx.on_cmd("stt", about={
     'header': "transcribe a file (speech to text)",
     'options': {'-t': 'send text to telegram as well as the transcription file'},
     'usage': "{tr}stt lang [file / folder path | direct link | reply to telegram file]",

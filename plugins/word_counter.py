@@ -2,10 +2,10 @@
 
 import asyncio
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("wordcount", about={
+@Archx.on_cmd("wordcount", about={
     'header': "Finds most 25 words used in last 1000 messages",
     'usage': "{tr}wordcount"},
     allow_private=False)
@@ -14,7 +14,7 @@ async def word_count(message: Message):
     words = custom()
     await message.edit("```Processed 0 messages...```")
     total = 0
-    async for msg in userge.iter_history(message.chat.id, 1000):
+    async for msg in Archx.iter_history(message.chat.id, 1000):
         total += 1
         if total % 200 == 0:
             await message.edit(f"```Processed {total} messages...```")

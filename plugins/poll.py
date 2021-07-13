@@ -3,10 +3,10 @@
 # By @Krishna_Singhal
 
 import random
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("poll", about={
+@Archx.on_cmd("poll", about={
     'header': "Create Poll of Suggestion to get opinion",
     'flags': {'-n': "Use to Make poll non-anonymous"},
     'usage': "{tr}poll [reply to ques text]"},
@@ -21,7 +21,7 @@ async def create_poll(msg: Message):
     if replied:
         query = "Do you agree with that replied Suggestion..?"
         msg_id = replied.message_id
-        await userge.send_poll(
+        await Archx.send_poll(
             chat_id=msg.chat.id,
             question=query,
             options=options,
@@ -29,7 +29,7 @@ async def create_poll(msg: Message):
             reply_to_message_id=msg_id)
     else:
         query = "Do you agree with that Suggestion..?"
-        await userge.send_poll(
+        await Archx.send_poll(
             chat_id=msg.chat.id,
             question=query,
             options=options,
@@ -37,7 +37,7 @@ async def create_poll(msg: Message):
     await msg.delete()
 
 
-@userge.on_cmd("vote", about={
+@Archx.on_cmd("vote", about={
     'header': "Vote poll",
     'description': "Options Should be in numeric",
     'usage': "{tr}vote [option | reply to poll]",
@@ -54,7 +54,7 @@ async def vote_poll(msg: Message):
             option = random.randint(0, len(replied.poll.options) - 1)
 
         try:
-            await userge.vote_poll(msg.chat.id, replied.message_id, option)
+            await Archx.vote_poll(msg.chat.id, replied.message_id, option)
         except Exception as e_f:
             await msg.err(e_f)
         else:
@@ -63,7 +63,7 @@ async def vote_poll(msg: Message):
         await msg.err("How can I vote without reply to poll")
 
 
-@userge.on_cmd("stop", about={
+@Archx.on_cmd("stop", about={
     'header': "Stop a poll which was sent by you.",
     'usage': "{tr}stop [reply to poll]"},
     allow_private=False)
@@ -74,7 +74,7 @@ async def stop_poll(msg: Message):
 
     if replied and replied.poll:
         try:
-            await userge.stop_poll(msg.chat.id, replied.message_id)
+            await Archx.stop_poll(msg.chat.id, replied.message_id)
         except Exception as e_f:
             await msg.err(e_f)
         else:
@@ -83,7 +83,7 @@ async def stop_poll(msg: Message):
         await msg.err("How can I stop poll without reply a poll")
 
 
-@userge.on_cmd("retract", about={
+@Archx.on_cmd("retract", about={
     'header': "Retract your vote in a Poll",
     'usage': "{tr}retract [reply to poll]"},
     allow_private=False)
@@ -94,7 +94,7 @@ async def retract_vote(msg: Message):
 
     if replied and replied.poll:
         try:
-            await userge.retract_vote(msg.chat.id, replied.message_id)
+            await Archx.retract_vote(msg.chat.id, replied.message_id)
         except Exception as e_f:
             await msg.err(e_f)
         else:

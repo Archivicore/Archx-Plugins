@@ -2,10 +2,10 @@
 
 import asyncio
 
-from userge import userge
+from Archx import Archx
 
 
-@userge.on_cmd("kill$", about={'header': "Kill anybody With Full Power ;-)"})
+@Archx.on_cmd("kill$", about={'header': "Kill anybody With Full Power ;-)"})
 async def kill_func(message):
     animation_chars = [
         "killing...",

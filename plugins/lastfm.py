@@ -11,8 +11,8 @@ from typing import Optional
 from urllib.parse import unquote
 
 from pyrogram.errors import ChatWriteForbidden, ChannelPrivate, ChatIdInvalid
-from userge import userge, Message, Config, pool, get_collection
-from userge.utils import time_formatter
+from Archx import Archx, Message, Config, pool, get_collection
+from Archx.utils import time_formatter
 
 API_KEY = os.environ.get("FM_API")
 API_SECRET = os.environ.get("FM_SECRET")
@@ -49,7 +49,7 @@ def check_creds(func):
 
 
 @check_creds
-@userge.on_cmd("lastfm", about={
+@Archx.on_cmd("lastfm", about={
     'header': "see current playing song and "
               "allow bot to send regular updates of song.",
     'flags': {'-on': "allow bot to send regular updation of songs",
@@ -85,7 +85,7 @@ async def _lastfm(msg: Message):
 
 
 @check_creds
-@userge.on_cmd("getuser", about={
+@Archx.on_cmd("getuser", about={
     'header': "Get user of lastfm.",
     'usage': "{tr}getuser\n{tr}getuser [username]"})
 async def get_user(msg: Message):
@@ -134,7 +134,7 @@ __Country:__ `{user.get_country()}`
 
 
 @check_creds
-@userge.on_cmd("lovesong", about={
+@Archx.on_cmd("lovesong", about={
     'header': "Love any track.",
     'description': "Specify which track you wanna love\n"
                    "if track will not specify then it will "
@@ -146,7 +146,7 @@ async def love_track(msg: Message):
 
 
 @check_creds
-@userge.on_cmd("unlove", about={
+@Archx.on_cmd("unlove", about={
     'header': "UnLove any track.",
     'description': "Specify which track you wanna Unlove\n"
                    "if track will not specify then it will "
@@ -158,7 +158,7 @@ async def unlove_track(msg: Message):
 
 
 @check_creds
-@userge.on_cmd("getloved", about={
+@Archx.on_cmd("getloved", about={
     'header': "Get list of all loved tracks.",
     'usage': "{tr}getloved\n{tr}getloved 20"})
 async def get_loved(msg: Message):
@@ -167,7 +167,7 @@ async def get_loved(msg: Message):
 
 
 @check_creds
-@userge.on_cmd("getrack", about={
+@Archx.on_cmd("getrack", about={
     'header': "Get track of lastfm.",
     'usage': "{tr}getrack\n{tr} getrack Artist - Title"})
 async def get_track(msg: Message):
@@ -183,7 +183,7 @@ async def get_track(msg: Message):
 
 
 @check_creds
-@userge.on_cmd(
+@Archx.on_cmd(
     "getrecent", about={
         'header': "Get recent tracks of Users or Myself.",
         'flags': {'-l': "specify limit"},
@@ -198,7 +198,7 @@ async def get_last_played(msg: Message):
     await LastFm(msg).get_last_played()
 
 
-@userge.add_task
+@Archx.add_task
 async def lastfm_worker():
     global NOW_PLAYING  # pylint: disable=global-statement
 
@@ -219,17 +219,17 @@ async def lastfm_worker():
                     NOW_PLAYING[0] = False
                     return
                 out += k
-                if userge.has_bot:
+                if Archx.has_bot:
                     try:
-                        await userge.bot.send_message(
+                        await Archx.bot.send_message(
                             chat_id, out, disable_web_page_preview=True
                         )
                     except (ChatWriteForbidden, ChannelPrivate, ChatIdInvalid):
-                        await userge.send_message(
+                        await Archx.send_message(
                             chat_id, out, disable_web_page_preview=True
                         )
                 else:
-                    await userge.send_message(
+                    await Archx.send_message(
                         chat_id, out, disable_web_page_preview=True
                     )
     NOW_PLAYING[0] = False  # Should not update to DB ig ?

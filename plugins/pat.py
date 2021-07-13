@@ -2,10 +2,10 @@ from urllib import parse
 from random import choice
 import aiohttp
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("pat", about={
+@Archx.on_cmd("pat", about={
     'header': "Give head Pat xD",
     'flags': {'-g': "For Pat Gifs"},
     'usage': "{tr}pat [reply | username]\n{tr}pat -g [reply]"})

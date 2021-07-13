@@ -8,14 +8,14 @@ from collections import deque
 
 from pyrogram.errors import FloodWait
 
-from userge import userge, Message, get_collection
+from Archx import Archx, Message, get_collection
 
 UPDATION = False
 AUTONAME_TIMEOUT = 60
 NAME = None
 
-CHANNEL = userge.getCLogger(__name__)
-LOG = userge.getLogger(__name__)
+CHANNEL = Archx.getCLogger(__name__)
+LOG = Archx.getLogger(__name__)
 
 USER_DATA = get_collection("CONFIGS")
 
@@ -56,7 +56,7 @@ async def _init() -> None:
         AUTONAME_TIMEOUT = a_t['data']
 
 
-@userge.on_cmd("autoname", about={
+@Archx.on_cmd("autoname", about={
     'header': "Auto Updates your Profile name with Diffrent Fonts",
     'usage': "{tr}autoname\n{tr}autoname [new name]"}, allow_via_bot=False)
 async def auto_name(msg: Message):
@@ -75,7 +75,7 @@ async def auto_name(msg: Message):
         data = await USER_DATA.find_one({'_id': 'UPDATION'})
         fname = data['fname']
         await msg.edit("`Setting up Original Name...`")
-        await userge.update_profile(first_name=fname)
+        await Archx.update_profile(first_name=fname)
         await USER_DATA.delete_one({'_id': 'UPDATION', 'fname': fname})
         await msg.edit(
             "Auto Name Updation is **Stopped** Successfully...", log=__name__, del_in=5)
@@ -84,7 +84,7 @@ async def auto_name(msg: Message):
     if not NAME:
         NAME = msg.from_user.first_name
     # Store current name to revert
-    first_name = (await userge.get_me()).first_name
+    first_name = (await Archx.get_me()).first_name
     await USER_DATA.update_one(
         {'_id': 'UPDATION'},
         {"$set": {'on': True, 'fname': first_name, 'NametoUpdate': NAME}},
@@ -98,7 +98,7 @@ async def auto_name(msg: Message):
     UPDATION = loop.create_task(_autoname_worker())
 
 
-@userge.on_cmd("santo", about={
+@Archx.on_cmd("santo", about={
     'header': "Set Auto Name timeout",
     'usage': "{tr}santo [timeout in seconds]",
     'examples': "{tr}santo 30"})
@@ -117,7 +117,7 @@ async def set_name_timeout(message: Message):
         f"`Set Auto Name timeout as {t_o} seconds!`", del_in=5)
 
 
-@userge.on_cmd("vanto", about={'header': "View Auto Name timeout"})
+@Archx.on_cmd("vanto", about={'header': "View Auto Name timeout"})
 async def view_name_timeout(message: Message):
     """ view Auto Name timeout """
     await message.edit(
@@ -125,7 +125,7 @@ async def view_name_timeout(message: Message):
         del_in=5)
 
 
-@userge.add_task
+@Archx.add_task
 async def _autoname_worker():
     global UPDATION, NAME, FONTS_  # pylint: disable=global-statement
     animation = "|/-\\"
@@ -143,7 +143,7 @@ async def _autoname_worker():
                 NAME = NAME.replace(ch, rep_ch, 1)
                 fname = animation[anicount] + ' $ ' + NAME + ' $ ' + animation[anicount]
                 try:
-                    await userge.update_profile(first_name=fname)
+                    await Archx.update_profile(first_name=fname)
                 except FloodWait as s_c:
                     await CHANNEL.log(f"Sleeping for {s_c} seconds because of Autoname.")
                     await asyncio.sleep(s_c.x)

@@ -3,13 +3,13 @@ import time
 import asyncio
 from datetime import datetime
 
-from userge import userge, Message, Config
-from userge.utils import progress
+from Archx import Archx, Message, Config
+from Archx.utils import progress
 
-FF_MPEG_DOWN_LOAD_MEDIA_PATH = "/app/downloads/userge.media.ffmpeg"
+FF_MPEG_DOWN_LOAD_MEDIA_PATH = "/app/downloads/Archx.media.ffmpeg"
 
 
-@userge.on_cmd("ffmpegsave", about={'header': "Save a media that is to be used in ffmpeg"})
+@Archx.on_cmd("ffmpegsave", about={'header': "Save a media that is to be used in ffmpeg"})
 async def ffmpegsave(message: Message):
     if not os.path.exists(FF_MPEG_DOWN_LOAD_MEDIA_PATH):
         if not os.path.isdir(Config.DOWN_PATH):
@@ -39,7 +39,7 @@ async def ffmpegsave(message: Message):
             f"Please remove the media and try again!\n`.term rm {FF_MPEG_DOWN_LOAD_MEDIA_PATH}`")
 
 
-@userge.on_cmd("ffmpegtrim", about={
+@Archx.on_cmd("ffmpegtrim", about={
     'header': "Trim a given media",
     'usage': "{tr}ffmpegtrim [start time] [end time]"})
 async def ffmpegtrim(message: Message):

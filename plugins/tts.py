@@ -4,13 +4,13 @@ from hachoir.metadata import extractMetadata as XMan
 from hachoir.parser import createParser as CPR
 from gtts import gTTS
 
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("tts", about={
+@Archx.on_cmd("tts", about={
     'header': "Text To Speech",
     'examples': [
-        "{tr}tts Userge", "{tr}tts en | Userge", "{tr}tts [reply to message]"
+        "{tr}tts Archx", "{tr}tts en | Archx", "{tr}tts [reply to message]"
     ]
 })
 async def text_to_speech(message: Message):

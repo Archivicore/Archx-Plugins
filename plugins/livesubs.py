@@ -3,10 +3,10 @@
 import asyncio
 
 from pyrogram.errors import FloodWait
-from userge import userge, Message
+from Archx import Archx, Message
 
 
-@userge.on_cmd("livesubs", about={
+@Archx.on_cmd("livesubs", about={
     'header': "Live Subscriber count for Public Groups and Channels",
     'usage': "{tr}livesubs [chat id]"})
 async def live_subs(msg: Message):
